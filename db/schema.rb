@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 2019_11_29_174008) do
     t.string "title"
     t.text "body"
     t.integer "score"
+    t.datetime "expires_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

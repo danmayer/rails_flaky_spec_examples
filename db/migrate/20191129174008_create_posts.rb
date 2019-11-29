@@ -4,6 +4,7 @@ class CreatePosts < ActiveRecord::Migration[6.0]
       t.string :title
       t.text :body
       t.integer :score
+      t.timestamp :expires_at
 
       t.timestamps
     end
