@@ -1,15 +1,29 @@
 require 'rails_helper'
 
-# Specs in this file have access to a helper object that includes
-# the PostsHelper. For example:
+# Example: Shared Class Variable State, Test Order dependency
 #
-# describe PostsHelper do
-#   describe "string concat" do
-#     it "concats two strings with spaces" do
-#       expect(helper.concat_strings("this","that")).to eq("this that")
-#     end
-#   end
-# end
+#
+# Specs in this file have access to a helper object that includes
+# a class based variable counter. The tests when run will pass or fail depending
+# on the order they are run. In this example it should fail 50% of the time.
+#
+# flaky: bundle exec rspec spec/helpers/posts_helper_spec.rb
+# failure: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52493
+# success: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52496
 RSpec.describe PostsHelper, type: :helper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "checks class state" do
+
+    # This spec will pass if this test runs first
+    it "can fetch counter" do
+      expect(helper.get_counter).to eq(1)
+    end
+
+    # This spec changes the state and class variable value for all tests
+    # that follow it in execution order.
+    it "can increament_counter" do
+      expect(helper.get_counter).to eq(1)
+      helper.increament_counter(2)
+      expect(helper.get_counter).to eq(3)
+    end
+  end
 end

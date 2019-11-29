@@ -8,14 +8,14 @@ RSpec.describe Post, type: :model do
       expect('first').to eq post.title
     end
 
-    # currently flaky based on random date
+    # currently flaky based on random date, fails 10% of the time
     # always passes: SPEC_DATE='02-10-2019 14:33:20' bundle exec rspec spec/models/post_spec.rb
     # always fails : SPEC_DATE='02-11-2019 14:33:20' bundle exec rspec spec/models/post_spec.rb
     it "can have confusing time test issues" do
       # NOTE: This spec passes in all cases when in UTC
       # but wouldn't when interacting with code that sets users timezones
       Time.zone = 'Pacific Time (US & Canada)'
-      travel_to Time.parse(ENV['SPEC_DATE'] || "#{rand(10)}-11-2019 14:33:20'")
+      travel_to Time.parse(ENV['SPEC_DATE'] || "#{(rand(20) + 1)}-11-2019 14:33:20'")
       post = Post.create!(title: 'first', body: 'post', score: 1, expires_at: Time.now + 48.hours)
       # This passes regardless of DST, but might not be the date you expect depending on use case
       expect(48.hours.from_now.to_json).to eq post.expires_at.to_json
