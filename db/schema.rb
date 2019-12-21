@@ -10,11 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_29_174008) do
+ActiveRecord::Schema.define(version: 2019_12_21_170034) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "hstore"
   enable_extension "plpgsql"
+
+  create_table "houses", force: :cascade do |t|
+    t.string "title"
+    t.text "body"
+    t.integer "price"
+  end
 
   create_table "posts", force: :cascade do |t|
     t.string "title"
