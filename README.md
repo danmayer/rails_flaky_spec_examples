@@ -24,6 +24,7 @@ We would love additional flaky spec examples, if you have solved a bad flaky spe
 	* send a PR which includes a stable spec to the solutions branch
 	* please cross link the PRs
 
-# Shout Outs
+# Resources
 
-* some of these examples were taken from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
+* some specs are modified examples from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
+* some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)

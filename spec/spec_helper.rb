@@ -93,4 +93,10 @@ RSpec.configure do |config|
   Kernel.srand config.seed
 
   config.include ActiveSupport::Testing::TimeHelpers
+
+  config.before(:all) do
+    # This helps show a spec which can fail based on 'clean' sequences
+    # which you might have on CI, but not locally
+    ActiveRecord::Base.connection.reset_pk_sequence!('posts')
+  end
 end
