@@ -23,3 +23,7 @@ We would love additional flaky spec examples, if you have solved a bad flaky spe
 	* send a PR which includes a flaky spec to the master branch
 	* send a PR which includes a stable spec to the solutions branch
 	* please cross link the PRs
+
+# Shout Outs
+
+* some of these examples were taken from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)

@@ -14,6 +14,8 @@ RSpec.describe Post, type: :model do
   # This spec run alone will always pass.
   # Run as part of the suite it will pass or fail depending on if it runs first
   # or second related to post_order_across_file_two_spec
+  # note: basically before(:all) is bad don't do it
+  # https://makandracards.com/makandra/11507-using-before-all-in-rspec-will-cause-you-lots-of-trouble-unless-you-know-what-you-are-doing
   ###
   describe "post can be modified" do
     it "expects results sorted by body specific order" do
