@@ -1,16 +1,16 @@
 # Rails Flaky Spec Examples Project
 
-This project is supposed to help show flaky test issues by example. You can run the project and see specs which sometimes pass and sometimes fail. 
+This project is supposed to help show flaky test issues by example. You can run the project and see specs that sometimes pass and sometimes fail. 
 
-* each spec file should try to show a single category of flaky spec. It may contain multiple specs with similar examples or have specs that need to be run together to show order dependant issues.
-* each spec file on the `solutions` branch should contain the spec in a 100% stable manner resolving the flaky issue, along with comments on what the issue and problem was.
+* each spec file should try to show a single category of flaky spec. It may contain multiple specs with similar examples or have specs that need to be run together to show order dependent issues.
+* each spec file nested in a `solved` branch should contain a spec with the same name which is 100% stable, resolving the flaky issue, along with comments on what the issue and problem were.
 * if possible, show flakiness in a single spec file vs flakiness requiring the full suite or multiple files
 
 # Understanding Examples
 
 Every example should try to document some notes, at the top of the file.
 
-example docs on flaky spec file on master branch:
+example docs on flaky spec file:
 
 ```ruby
 # Classification: Shared State
@@ -18,9 +18,9 @@ example docs on flaky spec file on master branch:
 # Suite Required: false
 ```
 
-example docs on solved spec file on solutions branch:
+example docs on solved spec file nested in the solved directory:
 
-```
+```ruby
 # Classification: Shared State
 # Approximate Success Rate: 50%
 # Example: Shared Class Variable State, in file test order dependency
@@ -28,7 +28,7 @@ example docs on solved spec file on solutions branch:
 # Description:
 # Specs in this file have access to a helper object that includes
 # a class based variable counter. The tests when run will pass or fail depending
-# on the order they are run. In this example it should fail 50% of the time.
+# on the order they are run. In this example, it should fail 50% of the time.
 #
 # flaky: bundle exec rspec spec/helpers/posts_helper_spec.rb
 # failure: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52493
@@ -37,21 +37,27 @@ example docs on solved spec file on solutions branch:
 
 ### Notes on Example Docs
 
-Note all specs will be able to have a estimated success rate. Also, not all example will be able to provide `flaky`, `failure`, and `success` examples.
+Note all specs will be able to have an estimated success rate. Also, not all examples will be able to provide `flaky`, `failure`, and `success` examples.
 
 # Getting Started
 
 * `git clone`
 * `bundle install`
 * `bundle exec rake db:drop db:create db:migrate`
+* `bundle exec rspec` 
 
 # Seeing Solutions
 
-The master branch is built with the intention of having a highly unstable, but randomly failing test suite. Switch to the `solutions` branch to see specs which have the same intention but aren't flaky and should pass 100% of the time.
+The suite is configured by default to run all the specs not tagged `solved`. The full default suite is built with the intention of having a highly unstable, and randomly failing test suite.
+
+Run with `--tag solved` to see specs passes. Each flaky spec should have a paired spec, which has the same intention but aren't flaky and should pass 100% of the time.
+
+* run entire solved suite: `bundle exec rspec --tag solved`
+* run individual solved spec: `bundle exec rspec --tag solved spec/helpers/solved/posts_helper_spec.rb`
 
 # Classifications
 
-Each spec should list it's flaky classification(s) from the list below, when a new classification example is added please list it below. We encourage multiple examples of the same classification, in different scenarios. For example flaky `timing` classified specs can be very different in unit and system tests.
+Each spec should list it's flaky classification(s) from the list below when a new classification example is added please list it below. We encourage multiple examples of the same classification, in different scenarios. For example flaky `timing` classified specs can be very different in unit and system tests.
 
 * Shared State
 * Timing
@@ -59,12 +65,11 @@ Each spec should list it's flaky classification(s) from the list below, when a n
 
 # Submitting Flaky Examples
 
-We would love additional flaky spec examples, if you have solved a bad flaky spec somewhere else try to create a minimal reproducable version of it as a PR for this project.
+We would love additional flaky spec examples if you have solved a bad flaky spec somewhere else try to create a minimal reproducible version of it as a PR for this project.
 
-* Send two PRs one show how the spec was flaky and another showing it in a "solved" state.
-	* send a PR which includes a flaky spec to the master branch
-	* send a PR which includes a stable spec to the solutions branch
-	* please cross link the PRs
+* Send a PR with two spec files one show how the spec was flaky and another showing it in a "solved" state.
+	* one spec file is a flaky spec in the standard spec directory
+	* one spec file is a stable spec in a subdirectory of `solved` below the standard spec directory
 
 # Resources
 

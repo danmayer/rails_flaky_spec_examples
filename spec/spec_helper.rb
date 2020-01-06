@@ -94,6 +94,10 @@ RSpec.configure do |config|
 
   config.include ActiveSupport::Testing::TimeHelpers
 
+  config.define_derived_metadata(:file_path => Regexp.new('/solved/')) do |metadata|
+    metadata[:solved] = :true
+  end
+
   config.before(:all) do
     # This helps show a spec which can fail based on 'clean' sequences
     # which you might have on CI, but not locally
