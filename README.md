@@ -28,3 +28,4 @@ We would love additional flaky spec examples, if you have solved a bad flaky spe
 
 * some specs are modified examples from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
 * some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)
+* make it easier to debug flaky tests, [5-ways to improve flaky test debugging](https://building.buildkite.com/5-ways-weve-improved-flakey-test-debugging-4b3cfb9f27c8)
