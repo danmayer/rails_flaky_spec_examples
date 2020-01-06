@@ -38,7 +38,7 @@ RSpec.describe "basic posts flow", :js do
       fill_in("post[body]", with: 'post')
       fill_in("post[score]", with: '1')
       click_button "Update Post"
-
+      expect(page).to have_content(/Post was successfully updated./i)
       expect(page).to have_content(/updated system test/i)
     end
   end
