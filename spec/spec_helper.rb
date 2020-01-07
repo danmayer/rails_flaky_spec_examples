@@ -99,6 +99,9 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
+    # Setting the timezone makes it easier to showcase spec timing failures
+    Time.zone = 'Pacific Time (US & Canada)'
+
     # This helps show a spec which can fail based on 'clean' sequences
     # which you might have on CI, but not locally
     ActiveRecord::Base.connection.reset_pk_sequence!('posts')

@@ -62,6 +62,7 @@ Each spec should list it's flaky classification(s) from the list below when a ne
 * Shared State
 * Timing
 * Order Dependency
+* Race Condition
 
 # Submitting Flaky Examples
 
