@@ -2,6 +2,7 @@ require 'rails_helper'
 
 # Classification: Shared State
 # Success Rate: ~50%
+# Suite Required: false
 # Example: Shared Class Variable State, in file test order dependency
 #
 # Description:

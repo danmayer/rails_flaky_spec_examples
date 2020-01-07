@@ -8,7 +8,7 @@ RSpec.describe Post, type: :model do
   let(:post) { Post.create!(title: 'first', body: 'post', score: 1) }
 
   describe "post created" do
-    it "can be updated" do
+    it "can be updated without changing the ID" do
       post.update!(title: 'updated')
       expect(post.id).to_not eq 1
     end
