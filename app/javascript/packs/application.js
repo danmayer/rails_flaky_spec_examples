@@ -20,7 +20,6 @@ function animatedSubmit(e) {
   e.preventDefault();
 
   var form = e.target;
-  console.log(form);
   var setAnimation = function() {
     return $(".post-submit")
       .animate({ opacity: 0.1 }, 1930)
@@ -35,6 +34,5 @@ function animatedSubmit(e) {
 }
 
 $(document).on("turbolinks:load", function() {
-  console.log("ready");
   $(".post-form").on("submit", animatedSubmit);
 });

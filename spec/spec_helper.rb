@@ -95,7 +95,8 @@ RSpec.configure do |config|
   config.include ActiveSupport::Testing::TimeHelpers
 
   config.define_derived_metadata(:file_path => Regexp.new('/solved/')) do |metadata|
-    metadata[:solved] = :true
+    metadata[:solved] = true
+    ENV['SOLVED_SPECS'] = 'true'
   end
 
   config.before(:all) do
