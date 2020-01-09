@@ -8,7 +8,7 @@ This project is supposed to help show flaky test issues by example. You can run 
 
 # Getting Started
 
-* `git clone`
+* `git clone https://github.com/danmayer/rails_flaky_spec_examples`
 * `bundle install`
 * `bundle exec rake db:drop db:create db:migrate`
 * `bundle exec rspec --tag solved`  # this should pass meaning you are all setup
@@ -23,7 +23,7 @@ example docs on flaky spec file:
 ```ruby
 # Classification: Shared State
 # Approximate Success Rate: 50%
-# Suite Required: false
+# Suite Required: false  # does this example stand alone or flake as part of a suite
 ```
 
 example docs on solved spec file nested in the solved directory:
@@ -31,21 +31,16 @@ example docs on solved spec file nested in the solved directory:
 ```ruby
 # Classification: Shared State
 # Approximate Success Rate: 50%
-# Example: Shared Class Variable State, in file test order dependency
+# Suite Required: false
+# Example: very brief description of the bug
 #
 # Description:
-# Specs in this file have access to a helper object that includes
-# a class based variable counter. The tests when run will pass or fail depending
-# on the order they are run. In this example, it should fail 50% of the time.
+# long description of the flakiness and how it is solved in this solution.
 #
 # flaky: bundle exec rspec spec/helpers/posts_helper_spec.rb
 # failure: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52493
 # success: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52496
 ```
-
-### Notes on Example Docs
-
-Note all specs will be able to have an estimated success rate. Also, not all examples will be able to provide `flaky`, `failure`, and `success` examples.
 
 # Seeing Solutions
 
@@ -78,7 +73,10 @@ We would love additional flaky spec examples if you have solved a bad flaky spec
 
 A list of suggested examples, I have yet to add...
 
-* not enough randomness / issues with faker gem
+* Timing
+	* timezone specific example (vs DST)
+	* new year
+	* leap year 
 * avoid exact ordering, match_array matcher instead of eq([...]).
 * another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
 
