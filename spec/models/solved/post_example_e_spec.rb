@@ -3,7 +3,7 @@ require 'rails_helper'
 # Classification: Randomness
 # Success Rate: 80%
 # Suite Required: false
-# Example: Randomness, poor faker usage
+# Example: Randomness, poor faker usage, https://github.com/faker-ruby/faker
 #
 # Description:
 # When purposefully using randomness in specs, be careful...
@@ -12,6 +12,7 @@ require 'rails_helper'
 #
 # In this case since we only need truly uniqueness, we moved to:
 # Faker::String.unique.random(2) which faker guarantees will be unique
+# so long as it doesn't run out of options, some of its collections have small sets
 #
 # flaky: bundle exec rspec spec/models/post_example_e_spec.rb
 # failure: N/A
