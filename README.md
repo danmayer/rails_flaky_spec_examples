@@ -64,6 +64,7 @@ Each spec should list it's flaky classification(s) from the list below when a ne
 * Time
 * Ordering
 * Race Condition
+* Randomness
 
 # Submitting Flaky Examples
 

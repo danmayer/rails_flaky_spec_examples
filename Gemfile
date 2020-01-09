@@ -36,6 +36,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'capybara'
   gem "webdrivers"
+  gem 'faker'
 end
 
 group :development do
