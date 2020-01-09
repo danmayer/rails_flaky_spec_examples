@@ -6,6 +6,14 @@ This project is supposed to help show flaky test issues by example. You can run 
 * each spec file nested in a `solved` branch should contain a spec with the same name which is 100% stable, resolving the flaky issue, along with comments on what the issue and problem were.
 * if possible, show flakiness in a single spec file vs flakiness requiring the full suite or multiple files
 
+# Getting Started
+
+* `git clone`
+* `bundle install`
+* `bundle exec rake db:drop db:create db:migrate`
+* `bundle exec rspec --tag solved`  # this should pass meaning you are all setup
+* `bundle exec rspec` # this should have a random number of failures
+
 # Understanding Examples
 
 Every example should try to document some notes, at the top of the file.
@@ -39,13 +47,6 @@ example docs on solved spec file nested in the solved directory:
 
 Note all specs will be able to have an estimated success rate. Also, not all examples will be able to provide `flaky`, `failure`, and `success` examples.
 
-# Getting Started
-
-* `git clone`
-* `bundle install`
-* `bundle exec rake db:drop db:create db:migrate`
-* `bundle exec rspec` 
-
 # Seeing Solutions
 
 The suite is configured by default to run all the specs not tagged `solved`. The full default suite is built with the intention of having a highly unstable, and randomly failing test suite.
@@ -60,8 +61,8 @@ Run with `--tag solved` to see specs passes. Each flaky spec should have a paire
 Each spec should list it's flaky classification(s) from the list below when a new classification example is added please list it below. We encourage multiple examples of the same classification, in different scenarios. For example flaky `timing` classified specs can be very different in unit and system tests.
 
 * Shared State
-* Timing
-* Order Dependency
+* Time
+* Ordering
 * Race Condition
 
 # Submitting Flaky Examples
@@ -72,8 +73,20 @@ We would love additional flaky spec examples if you have solved a bad flaky spec
 	* one spec file is a flaky spec in the standard spec directory
 	* one spec file is a stable spec in a subdirectory of `solved` below the standard spec directory
 
+# TODO
+
+A list of suggested examples, I have yet to add...
+
+* not enough randomness / issues with faker gem
+* avoid exact ordering, match_array matcher instead of eq([...]).
+* another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
+
 # Resources
+
+There are a number of good related posts and projects that are also good follow up reading on flaky specs.
 
 * some specs are modified examples from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
 * some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)
 * make it easier to debug flaky tests, [5-ways to improve flaky test debugging](https://building.buildkite.com/5-ways-weve-improved-flakey-test-debugging-4b3cfb9f27c8)
+* test-smells, [examples of bad JS and Ruby test patterns](https://github.com/testdouble/test-smells)
+* [list of flaky test practices to avoid](https://github.com/evilmartians/terraforming-rails/blob/master/guides/flaky.md)

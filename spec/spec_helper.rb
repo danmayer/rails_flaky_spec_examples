@@ -99,6 +99,10 @@ RSpec.configure do |config|
     ENV['SOLVED_SPECS'] = 'true'
   end
 
+  config.before(:suite) do
+    Post.delete_all
+  end
+
   config.before(:all) do
     # Setting the timezone makes it easier to showcase spec timing failures
     Time.zone = 'Pacific Time (US & Canada)'

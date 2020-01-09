@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-# Classification: Timing
+# Classification: Time
 # Success Rate: 80%
 # Suite Required: false
 # Example: Timing Error, based on the time and date the spec is run
@@ -10,9 +10,9 @@ require 'rails_helper'
 # this was extracted from a real world project, where an upstream service used 48.hours
 # and the client service used 2.days in the tests. The tests failed only around DST changes.
 #
-# flaky: bundle exec rspec spec/models/post_example_two_spec.rb
-# failure: SPEC_DATE='02-11-2019 14:33:20' bundle exec rspec spec/models/post_example_two_spec.rb
-# success: SPEC_DATE='02-10-2019 14:33:20' bundle exec rspec spec/models/post_example_two_spec.rb
+# flaky: bundle exec rspec spec/models/post_example_b_spec.rb
+# failure: SPEC_DATE='02-11-2019 14:33:20' bundle exec rspec spec/models/post_example_b_spec.rb
+# success: SPEC_DATE='02-10-2019 14:33:20' bundle exec rspec spec/models/post_example_b_spec.rb
 RSpec.describe Post, type: :model do
   describe "post created" do
     it "has expected default expires_at" do
