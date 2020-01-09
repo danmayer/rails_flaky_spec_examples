@@ -35,8 +35,9 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'capybara'
-  gem "webdrivers"
+  gem 'webdrivers'
   gem 'faker'
+  gem 'webmock'
 end
 
 group :development do

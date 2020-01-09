@@ -60,6 +60,7 @@ Each spec should list it's flaky classification(s) from the list below when a ne
 * Ordering
 * Race Condition
 * Randomness
+* External Dependency
 
 # Submitting Flaky Examples
 
