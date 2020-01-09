@@ -77,8 +77,11 @@ A list of suggested examples, I have yet to add...
 	* timezone specific example (vs DST)
 	* new year
 	* leap year 
-* avoid exact ordering, match_array matcher instead of eq([...]).
+* avoid exact ordering, match_array matcher instead of eq([...]). or eq vs include?
 * another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
+* capybara
+   * ajax request race conditions
+   * with external network API request
 
 # Resources
 
