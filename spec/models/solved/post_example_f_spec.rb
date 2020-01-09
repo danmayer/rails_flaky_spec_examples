@@ -9,7 +9,11 @@ require 'rails_helper'
 # There are a number of ways to handle network requests in spec suites. I would normally also recommend
 # your code path handling errors and testing both success and error conditions.
 #
-# In this case I used webmock https://github.com/bblimke/webmock
+# The specs were flaky because of Net::ReadTimeout which would occur some percentage of the time
+# how to best work with and handle timeouts is a complex topic read more here
+# https://felipeelias.github.io/ruby/2017/08/20/net-http-timeouts.html
+#
+# In this case, we wanted to have stable http requests, I used webmock https://github.com/bblimke/webmock
 # this allows us to intercept network requests and provice a stable response
 # you can stub both success and failure scenarios, and prevent accident network
 # requests from slipping into you spec suite.
