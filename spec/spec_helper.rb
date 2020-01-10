@@ -14,6 +14,7 @@
 #
 require 'active_support/testing/time_helpers'
 require 'webmock/rspec'
+WebMock.allow_net_connect!
 
 # See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
 RSpec.configure do |config|

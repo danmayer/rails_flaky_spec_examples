@@ -33,6 +33,26 @@ function animatedSubmit(e) {
     .then(complete);
 }
 
+// work on JS ajax race condition between count and generate
+// function generateSubmit(e) {
+//   e.preventDefault();
+//
+//   $.post('/posts/generate', function(data) {
+//     $this.replaceWith(data);
+//   });
+// }
+
+function load_remote_divs() {
+  $("[data-load-url]").each(function() {
+    var $this = $(this);
+    $.get($this.data("load-url"), function(data) {
+      $this.replaceWith(data);
+    });
+  });
+}
+
 $(document).on("turbolinks:load", function() {
   $(".post-form").on("submit", animatedSubmit);
+  //$(".generate-submit").on("click", generateSubmit);
+  load_remote_divs();
 });

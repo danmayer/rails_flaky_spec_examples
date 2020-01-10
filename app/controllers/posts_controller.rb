@@ -11,6 +11,17 @@ class PostsController < ApplicationController
              end
   end
 
+  def missing_body_count
+    @total_count = Post.count 
+    @missing_count = Post.where(body: nil).count
+    render :layout => false
+  end
+
+  def generate
+    Post.generate!
+    redirect_to '/posts'
+  end
+
   # GET /posts/1
   # GET /posts/1.json
   def show

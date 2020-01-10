@@ -21,7 +21,7 @@ require "rails_helper"
 # * disable all CSS animations and transitions
 #     * see details here: https://stackoverflow.com/questions/19662287/turn-off-animations-in-capybara-tests
 #
-# flaky: bundle exec rspec spec/system/solved/posts_lifecycle_spec.rb
+# flaky: bundle exec rspec spec/system/posts_lifecycle_spec.rb
 # failure: N/A, hilariously since it is a race condition, play a video it will slow down and fail
 # success: bundle exec rspec --tag solved spec/system/solved/posts_lifecycle_spec.rb
 #

@@ -1,4 +1,5 @@
 require 'net/http'
+require 'securerandom'
 
 class Post < ApplicationRecord
   validates :title, uniqueness: true
@@ -17,6 +18,11 @@ class Post < ApplicationRecord
     Post.where(body: nil).each_with_index do |post, index|
       post.update!(body: pull_body)
     end
+  end
+
+  def self.generate!
+    body = pull_body rescue nil
+    Post.create!(title: "generated #{SecureRandom.uuid}", body: body)
   end
 
   private

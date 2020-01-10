@@ -9,7 +9,10 @@ This project is supposed to help show flaky test issues by example. You can run 
 # Getting Started
 
 * `git clone https://github.com/danmayer/rails_flaky_spec_examples`
+* `cd rails_flaky_spec_examples`
+* `gem insstall bundler #if you don't have bundler 2.0.X`
 * `bundle install`
+* `yarn`
 * `bundle exec rake db:drop db:create db:migrate`
 * `bundle exec rspec --tag solved`  # this should pass meaning you are all setup
 * `bundle exec rspec` # this should have a random number of failures
@@ -83,6 +86,9 @@ A list of suggested examples, I have yet to add...
 * capybara
    * ajax request race conditions
    * with external network API request
+* infrastructure error like redis or postgres hasn't started in time for the spec suite
+    * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
+* class munging definine the same fake test class in two different specs, that would fail when run in wrong order
 
 # Resources
 

@@ -34,4 +34,10 @@
 
 <br>
 
-<%= link_to 'New Post', new_post_path %>
+<%= link_to 'New Post', new_post_path %><br/>
+<%= button_to 'Generate Post', generate_posts_path, class: 'generate-submit' %><br/>
+
+<div>
+  Post Totals<br/>
+  <div data-load-url="/posts/missing_body_count">loading...</div>
+</div>
