@@ -1,7 +1,8 @@
 # Rails Flaky Spec Examples Project
 
 flaky: [![CircleCI](https://circleci.com/gh/danmayer/rails_flaky_spec_examples.svg?style=svg)](https://circleci.com/gh/danmayer/rails_flaky_spec_examples) 
-stable: 
+stable:  [![GithubCI](https://github.com/actions/toolkit/workflows/Main%20workflow/badge.svg)](https://github.com/danmayer/rails_flaky_spec_examples/actions)
+
 
 This project is supposed to help show flaky test issues by example. You can run the project and see specs that sometimes pass and sometimes fail. 
 

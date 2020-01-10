@@ -19,6 +19,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+      - uses: actions/cache@v1
+        with:
+          path: vendor/bundle
+          key: ${{ runner.os }}-gem-${{ hashFiles('**/Gemfile.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-gem-
       - name: Setup Ruby
         uses: actions/setup-ruby@v1
         with:
@@ -26,6 +32,12 @@ jobs:
       - uses: borales/actions-yarn@v2.0.0
         with:
           cmd: install
+      - name: Bundle install
+        run: |
+          sudo apt-get -yqq install libpq-dev
+          gem install bundler
+          bundle config path vendor/bundle
+          bundle install --jobs 4 --retry 3
       - name: Build and run tests
         env:
           DATABASE_URL: postgres://postgres:@localhost:5432/test
@@ -33,8 +45,5 @@ jobs:
           RAILS_ENV: test
           RAILS_MASTER_KEY: ${{ secrets.RAILS_MASTER_KEY }}
         run: |
-          sudo apt-get -yqq install libpq-dev
-          gem install bundler
-          bundle install --jobs 4 --retry 3
           bundle exec rails db:prepare
           bundle exec rspec --tag solved
