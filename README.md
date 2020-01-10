@@ -1,5 +1,8 @@
 # Rails Flaky Spec Examples Project
 
+flaky: [![CircleCI](https://circleci.com/gh/danmayer/rails_flaky_spec_examples.svg?style=svg)](https://circleci.com/gh/danmayer/rails_flaky_spec_examples) 
+stable: 
+
 This project is supposed to help show flaky test issues by example. You can run the project and see specs that sometimes pass and sometimes fail. 
 
 * each spec file should try to show a single category of flaky spec. It may contain multiple specs with similar examples or have specs that need to be run together to show order dependent issues.
