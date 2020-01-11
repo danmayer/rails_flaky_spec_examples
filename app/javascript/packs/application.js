@@ -22,6 +22,7 @@ function animatedSubmit(e) {
   var form = e.target;
   var setAnimation = function() {
     return $(".post-submit")
+      .data("animating", "now")
       .animate({ opacity: 0.1 }, 1930)
       .promise();
   };

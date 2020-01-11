@@ -94,6 +94,12 @@ A list of suggested examples, I have yet to add...
     * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
 * class munging definine the same fake test class in two different specs, that would fail when run in wrong order
 
+# Interesting Seeds
+
+These can be helpful in terms of examples and understanding what is happening... Technically if absolutely everything goes right, the flaky spec suite could pass...
+
+* `bundle exec rspec --seed 23455 spec/models/` -> a passing run
+
 # Resources
 
 There are a number of good related posts and projects that are also good follow up reading on flaky specs.
