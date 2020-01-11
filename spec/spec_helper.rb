@@ -106,7 +106,7 @@ RSpec.configure do |config|
   end
 
   config.before(:all) do
-    # Setting the timezone makes it easier to showcase spec timing failures
+    # Setting the timezone makes it easier to showcase spec Time failures
     Time.zone = 'Pacific Time (US & Canada)'
 
     # This helps show a spec which can fail based on 'clean' sequences

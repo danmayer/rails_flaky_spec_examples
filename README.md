@@ -1,25 +1,24 @@
 # Rails Flaky Spec Examples Project
 
-flaky: [![CircleCI](https://circleci.com/gh/danmayer/rails_flaky_spec_examples.svg?style=svg)](https://circleci.com/gh/danmayer/rails_flaky_spec_examples) 
-stable:  [![GithubCI](https://github.com/danmayer/rails_flaky_spec_examples/workflows/CI/badge.svg)](https://github.com/danmayer/rails_flaky_spec_examples/actions)
+flaky: [![CircleCI](https://circleci.com/gh/danmayer/rails_flaky_spec_examples.svg?style=svg)](https://circleci.com/gh/danmayer/rails_flaky_spec_examples)
+stable: [![GithubCI](https://github.com/danmayer/rails_flaky_spec_examples/workflows/CI/badge.svg)](https://github.com/danmayer/rails_flaky_spec_examples/actions)
 
+This project is supposed to help show flaky test issues by example. You can run the project and see specs that sometimes pass and sometimes fail.
 
-This project is supposed to help show flaky test issues by example. You can run the project and see specs that sometimes pass and sometimes fail. 
-
-* each spec file should try to show a single category of flaky spec. It may contain multiple specs with similar examples or have specs that need to be run together to show order dependent issues.
-* each spec file nested in a `solved` branch should contain a spec with the same name which is 100% stable, resolving the flaky issue, along with comments on what the issue and problem were.
-* if possible, show flakiness in a single spec file vs flakiness requiring the full suite or multiple files
+- each spec file should try to show a single category of flaky spec. It may contain multiple specs with similar examples or have specs that need to be run together to show order dependent issues.
+- each spec file nested in a `solved` branch should contain a spec with the same name which is 100% stable, resolving the flaky issue, along with comments on what the issue and problem were.
+- if possible, show flakiness in a single spec file vs flakiness requiring the full suite or multiple files
 
 # Getting Started
 
-* `git clone https://github.com/danmayer/rails_flaky_spec_examples`
-* `cd rails_flaky_spec_examples`
-* `gem insstall bundler #if you don't have bundler 2.0.X`
-* `bundle install`
-* `yarn`
-* `bundle exec rake db:drop db:create db:migrate`
-* `bundle exec rspec --tag solved`  # this should pass meaning you are all setup
-* `bundle exec rspec` # this should have a random number of failures
+- `git clone https://github.com/danmayer/rails_flaky_spec_examples`
+- `cd rails_flaky_spec_examples`
+- `gem insstall bundler #if you don't have bundler 2.0.X`
+- `bundle install`
+- `yarn`
+- `bundle exec rake db:drop db:create db:migrate`
+- `bundle exec rspec --tag solved` # this should pass meaning you are all setup
+- `bundle exec rspec` # this should have a random number of failures
 
 # Understanding Examples
 
@@ -55,59 +54,58 @@ The suite is configured by default to run all the specs not tagged `solved`. The
 
 Run with `--tag solved` to see specs passes. Each flaky spec should have a paired spec, which has the same intention but aren't flaky and should pass 100% of the time.
 
-* run entire solved suite: `bundle exec rspec --tag solved`
-* run individual solved spec: `bundle exec rspec --tag solved spec/helpers/solved/posts_helper_spec.rb`
+- run entire solved suite: `bundle exec rspec --tag solved`
+- run individual solved spec: `bundle exec rspec --tag solved spec/helpers/solved/posts_helper_spec.rb`
 
 # Classifications
 
-Each spec should list it's flaky classification(s) from the list below when a new classification example is added please list it below. We encourage multiple examples of the same classification, in different scenarios. For example flaky `timing` classified specs can be very different in unit and system tests.
+Each spec should list it's flaky classification(s) from the list below when a new classification example is added please list it below. We encourage multiple examples of the same classification, in different scenarios. For example flaky `Time` classified specs can be very different in unit and system tests.
 
-* Shared State
-* Time
-* Ordering
-* Race Condition
-* Randomness
-* External Dependency
+- Shared State
+- Time
+- Ordering
+- Race Condition
+- Randomness
+- External Dependency
 
 # Submitting Flaky Examples
 
 We would love additional flaky spec examples if you have solved a bad flaky spec somewhere else try to create a minimal reproducible version of it as a PR for this project.
 
-* Send a PR with two spec files one show how the spec was flaky and another showing it in a "solved" state.
-	* one spec file is a flaky spec in the standard spec directory
-	* one spec file is a stable spec in a subdirectory of `solved` below the standard spec directory
+- Send a PR with two spec files one show how the spec was flaky and another showing it in a "solved" state.
+  _ one spec file is a flaky spec in the standard spec directory
+  _ one spec file is a stable spec in a subdirectory of `solved` below the standard spec directory
 
 # TODO
 
 A list of suggested examples, I have yet to add...
 
-* Timing
-	* timezone specific example (vs DST)
-	* new year
-	* leap year 
-* avoid exact ordering, match_array matcher instead of eq([...]). or eq vs include?
-* another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
-* capybara
-   * ajax request race conditions
-   * with external network API request
-* infrastructure error like redis or postgres hasn't started in time for the spec suite
-    * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
-* class munging definine the same fake test class in two different specs, that would fail when run in wrong order
+- Time
+  _ timezone specific example (vs DST)
+  _ new year \* leap year
+- avoid exact ordering, match_array matcher instead of eq([...]). or eq vs include?
+- another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
+- capybara
+  - ajax request race conditions
+  - with external network API request
+- infrastructure error like redis or postgres hasn't started in time for the spec suite
+  - perhaps this one is to much of a CI or machine setup Time issue vs flaky tests?
+- class munging definine the same fake test class in two different specs, that would fail when run in wrong order
 
 # Interesting Seeds
 
 These can be helpful in terms of examples and understanding what is happening... Technically if absolutely everything goes right, the flaky spec suite could pass...
 
-* `bundle exec rspec --seed 23455 spec/models/` -> a passing run
+- `bundle exec rspec --seed 23455 spec/models/` -> a passing run
 
 # Resources
 
 There are a number of good related posts and projects that are also good follow up reading on flaky specs.
 
-* some specs are modified examples from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
-* some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)
-* make it easier to debug flaky tests, [5-ways to improve flaky test debugging](https://building.buildkite.com/5-ways-weve-improved-flakey-test-debugging-4b3cfb9f27c8)
-* test-smells, [examples of bad JS and Ruby test patterns](https://github.com/testdouble/test-smells)
-* [list of flaky test practices to avoid](https://github.com/evilmartians/terraforming-rails/blob/master/guides/flaky.md)
-* [fixing flaky tests like a detective](https://sonja.codes/fixing-flaky-tests-like-a-detective)
-* [eliminating flaky ruby tests](https://engineering.gusto.com/eliminating-flaky-ruby-tests/)
+- some specs are modified examples from [Why RSpec Tests Fail (and How To Fix Them)](https://medium.com/better-programming/why-rspec-tests-fail-and-how-to-fix-them-402f1c7dce16)
+- some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)
+- make it easier to debug flaky tests, [5-ways to improve flaky test debugging](https://building.buildkite.com/5-ways-weve-improved-flakey-test-debugging-4b3cfb9f27c8)
+- test-smells, [examples of bad JS and Ruby test patterns](https://github.com/testdouble/test-smells)
+- [list of flaky test practices to avoid](https://github.com/evilmartians/terraforming-rails/blob/master/guides/flaky.md)
+- [fixing flaky tests like a detective](https://sonja.codes/fixing-flaky-tests-like-a-detective)
+- [eliminating flaky ruby tests](https://engineering.gusto.com/eliminating-flaky-ruby-tests/)

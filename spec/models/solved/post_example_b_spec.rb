@@ -3,7 +3,7 @@ require 'rails_helper'
 # Classification: Time
 # Success Rate: 80%
 # Suite Required: false
-# Example: Timing Error, based on the time and date the spec is run
+# Example: Time Error, based on the time and date the spec is run
 #
 # Description:
 # Specs in this file depend on the system time, while this is a simplified example

@@ -7,7 +7,7 @@ require "rails_helper"
 #
 # Description:
 # Specs in this file run JS!
-# Once you are running JS things are happening async in the browser that can cause timing issues
+# Once you are running JS things are happening async in the browser that can cause Time issues
 #
 # There MANY ways to solve this issue... We can document a few solutions
 #
