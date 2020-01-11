@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Post, type: :model do
 
-  # Classification: Timing
+  # Classification: Time
   # Success Rate: 80%
   # Suite Required: false
   describe "post created" do
