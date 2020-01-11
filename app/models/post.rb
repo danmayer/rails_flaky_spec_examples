@@ -25,7 +25,7 @@ class Post < ApplicationRecord
     Post.create!(title: "generated #{SecureRandom.uuid}", body: body)
   end
 
-  TITLES = [ 'cow says moo', 'title one', 'funny title', 'this is barely random' ] 
+  TITLES = [ 'cow says moo', 'title one', 'funny title', 'this is barely random' ]
   def self.suggest_title
     TITLES.sample
   end
@@ -64,6 +64,6 @@ class Post < ApplicationRecord
   end
 
   def set_expires_at
-    self.expires_at ||= Time.now + 2.days
+    self.expires_at ||= Time.current + 2.days
   end
 end
