@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Classification: Shared State, Ordering
@@ -18,12 +20,11 @@ require 'rails_helper'
 # bundle exec rspec spec/models/post_example_a_spec.rb
 # success: N/A
 RSpec.describe Post, type: :model do
-
   let(:post) { Post.create!(title: 'first', body: 'post', score: 1) }
 
   describe "post created" do
     it "can be updated without changing the ID" do
-      expect{ post.update!(title: 'updated') }.to_not change{ post.reload.id }
+      expect { post.update!(title: 'updated') }.to_not(change { post.reload.id })
     end
   end
 end

@@ -1,7 +1,8 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Post, type: :model do
-
   # Classification: Time
   # Success Rate: 80%
   # Suite Required: false
@@ -17,7 +18,7 @@ RSpec.describe Post, type: :model do
     # A logic mismatch exists and should not be fixed by removing rand or travel_to
     # DO NOT REMOVE: `rand` or `travel_to` to 'solve' this spec
     def simulate_test_running_on_different_days
-      travel_to Time.parse(ENV['SPEC_DATE'] || "#{(rand(5) + 1)}-11-2019 14:33:20'")
+      travel_to Time.parse(ENV['SPEC_DATE'] || "#{rand(1..5)}-11-2019 14:33:20'")
     end
   end
 end

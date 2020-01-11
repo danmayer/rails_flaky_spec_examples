@@ -1,5 +1,6 @@
-module PostsHelper
+# frozen_string_literal: true
 
+module PostsHelper
   ###
   # This is a bad example of a helper file / methods, but it isn't uncommon to have
   # class variable based caches, initilized on boot in Rails.

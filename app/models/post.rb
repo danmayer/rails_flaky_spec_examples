@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'net/http'
 require 'securerandom'
 
@@ -15,17 +17,21 @@ class Post < ApplicationRecord
   end
 
   def self.set_body
-    Post.where(body: nil).each_with_index do |post, index|
+    Post.where(body: nil).each_with_index do |post, _index|
       post.update!(body: pull_body)
     end
   end
 
   def self.generate!
-    body = pull_body rescue nil
+    body = begin
+             pull_body
+           rescue StandardError
+             nil
+           end
     Post.create!(title: "generated #{SecureRandom.uuid}", body: body)
   end
 
-  TITLES = [ 'cow says moo', 'title one', 'funny title', 'this is barely random' ]
+  TITLES = ['cow says moo', 'title one', 'funny title', 'this is barely random']
   def self.suggest_title
     TITLES.sample
   end
@@ -48,18 +54,18 @@ class Post < ApplicationRecord
   def self.body_from_json_placeholder
     url = URI.parse('http://jsonplaceholder.typicode.com/posts/1')
     req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port, :open_timeout => 3, :read_timeout => 3) {|http|
+    res = Net::HTTP.start(url.host, url.port, open_timeout: 3, read_timeout: 3) do |http|
       http.request(req)
-    }
+    end
     JSON.parse(res.body)['title']
   end
 
   def self.body_from_json_beeceptor
     url = URI.parse('http://flaky-examples.free.beeceptor.com/get_text')
     req = Net::HTTP::Get.new(url.to_s)
-    res = Net::HTTP.start(url.host, url.port, :open_timeout => 3, :read_timeout => 3) {|http|
+    res = Net::HTTP.start(url.host, url.port, open_timeout: 3, read_timeout: 3) do |http|
       http.request(req)
-    }
+    end
     JSON.parse(res.body)['title']
   end
 

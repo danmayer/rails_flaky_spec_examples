@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 # Classification: Race Condition
@@ -29,13 +31,13 @@ require "rails_helper"
 # are applied which results in the JS being fixed in the app code.
 RSpec.describe "basic posts flow", :js do
   before do
-    existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
   end
 
   context "posts" do
     it "can see index" do
       visit "/posts"
-      expect(page).to have_content(/first system post/i)
+      expect(page).to have_content(/#{@existing_post.title}/i)
     end
 
     it "can add a new post" do

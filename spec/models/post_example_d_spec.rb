@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Classification: Shared State
@@ -8,7 +10,7 @@ RSpec.describe Post, type: :model do
 
   describe "post set_scores" do
     it "expect set_scores to add scores to posts missing scores" do
-      expect{ Post.set_scores }.to change{ post.reload.score }.from(nil).to(1)
+      expect { Post.set_scores }.to change { post.reload.score }.from(nil).to(1)
     end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Classification: Shared State
@@ -17,7 +19,6 @@ require 'rails_helper'
 # failure: N/A
 # success: N/A
 RSpec.describe Post, type: :model do
-
   # This spec never really had any reason to use before(:all) and switching to before works.
   before do
     @post = Post.create_or_find_by!(title: 'my title', body: 'post')

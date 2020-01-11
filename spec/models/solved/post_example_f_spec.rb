@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 # Classification: External Dependency
@@ -35,28 +37,30 @@ RSpec.describe Post, type: :model do
 
       # I recommend having a spec_helper included so you can just call something like
       # stub_jsonplaceholder_post(1) from any spec, inlined for example
-      stub_request(:get, "http://jsonplaceholder.typicode.com/posts/1").
-        with(
+      stub_request(:get, "http://jsonplaceholder.typicode.com/posts/1")
+        .with(
           headers: {
-         'Accept'=>'*/*',
-         'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-         'User-Agent'=>'Ruby'
-          }).
-        to_return(status: 200, body: '{"title": "a title"}', headers: {})
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'User-Agent' => 'Ruby'
+          }
+        )
+        .to_return(status: 200, body: '{"title": "a title"}', headers: {})
 
-      stub_request(:get, "http://flaky-examples.free.beeceptor.com/get_text").
-       with(
-         headers: {
-     	  'Accept'=>'*/*',
-     	  'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-     	  'User-Agent'=>'Ruby'
-         }).
-       to_return(status: 200, body: '{"title": "a diff title"}', headers: {})
+      stub_request(:get, "http://flaky-examples.free.beeceptor.com/get_text")
+        .with(
+          headers: {
+            'Accept' => '*/*',
+            'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+            'User-Agent' => 'Ruby'
+          }
+        )
+        .to_return(status: 200, body: '{"title": "a diff title"}', headers: {})
     end
 
     it "expect to set body on posts without one" do
       post = Post.create!(title: Faker::String.unique.random(22).tr("\u0000", ''))
-      expect{ Post.set_body }.to change{ post.reload.body.class }.from(NilClass).to(String)
+      expect { Post.set_body }.to change { post.reload.body.class }.from(NilClass).to(String)
     end
   end
 end

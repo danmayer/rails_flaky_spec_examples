@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require "rails_helper"
 
 # Classification: External Dependency
@@ -23,37 +25,39 @@ require "rails_helper"
 # success: N/A
 RSpec.describe "posts ajax fills body", :js do
   before do
-    existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
     # NOTE: this should really be in spec_helpers and be set for your entire test suite
     # doing so will avoid any network connections from slipping into your test suite
     WebMock.disable_net_connect!(allow_localhost: true)
 
     # I recommend having a spec_helper included so you can just call something like
     # stub_jsonplaceholder_post(1) from any spec, inlined for example
-    stub_request(:get, "http://jsonplaceholder.typicode.com/posts/1").
-      with(
+    stub_request(:get, "http://jsonplaceholder.typicode.com/posts/1")
+      .with(
         headers: {
-       'Accept'=>'*/*',
-       'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-       'User-Agent'=>'Ruby'
-        }).
-      to_return(status: 200, body: '{"title": "a title"}', headers: {})
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent' => 'Ruby'
+        }
+      )
+      .to_return(status: 200, body: '{"title": "a title"}', headers: {})
 
-    stub_request(:get, "http://flaky-examples.free.beeceptor.com/get_text").
-     with(
-       headers: {
-      'Accept'=>'*/*',
-      'Accept-Encoding'=>'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
-      'User-Agent'=>'Ruby'
-       }).
-     to_return(status: 200, body: '{"title": "a diff title"}', headers: {})
+    stub_request(:get, "http://flaky-examples.free.beeceptor.com/get_text")
+      .with(
+        headers: {
+          'Accept' => '*/*',
+          'Accept-Encoding' => 'gzip;q=1.0,deflate;q=0.6,identity;q=0.3',
+          'User-Agent' => 'Ruby'
+        }
+      )
+      .to_return(status: 200, body: '{"title": "a diff title"}', headers: {})
   end
 
   context "posts" do
     it "can see index" do
       post_count = Post.count
       visit "/posts"
-      expect(page).to have_content(/first system post/i)
+      expect(page).to have_content(/#{@existing_post.title}/i)
       expect(page).to have_content("total: #{post_count}")
       expect(page).to have_content("missing body: 0")
 
