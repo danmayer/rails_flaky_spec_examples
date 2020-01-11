@@ -25,6 +25,11 @@ class Post < ApplicationRecord
     Post.create!(title: "generated #{SecureRandom.uuid}", body: body)
   end
 
+  TITLES = [ 'cow says moo', 'title one', 'funny title', 'this is barely random' ] 
+  def self.suggest_title
+    TITLES.sample
+  end
+
   private
 
   ###
