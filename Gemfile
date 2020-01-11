@@ -39,6 +39,7 @@ group :development, :test do
   gem 'faker'
   gem 'rspec-rails', '~> 4.0.0.beta2'
   gem 'rubocop'
+  gem 'rubocop-rspec'
   gem 'webdrivers'
   gem 'webmock'
 end

@@ -24,8 +24,10 @@ require "rails_helper"
 # failure: N/A
 # success: N/A
 RSpec.describe "posts ajax fills body", :js do
+  let(:existing_post) { Post.create!(title: 'first system post', body: 'post', score: 1) }
+
   before do
-    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    existing_post
     # NOTE: this should really be in spec_helpers and be set for your entire test suite
     # doing so will avoid any network connections from slipping into your test suite
     WebMock.disable_net_connect!(allow_localhost: true)
@@ -57,7 +59,7 @@ RSpec.describe "posts ajax fills body", :js do
     it "can see index" do
       post_count = Post.count
       visit "/posts"
-      expect(page).to have_content(/#{@existing_post.title}/i)
+      expect(page).to have_content(/#{existing_post.title}/i)
       expect(page).to have_content("total: #{post_count}")
       expect(page).to have_content("missing body: 0")
 

@@ -15,19 +15,25 @@ require 'rails_helper'
 # Basically, `before(:all)`` is bad don't do it.
 # https://makandracards.com/makandra/11507-using-before-all-in-rspec-will-cause-you-lots-of-trouble-unless-you-know-what-you-are-doing
 #
+# 'rubocop-rspec' will give an error for using before(:all), I disabled that cop so
+# I could show an example, but it really should be avoided, and rubocop-rspec can help
+# ensure usage doesn't slip in
+#
 # flaky: bundle exec rspec
 # failure: N/A
 # success: N/A
 RSpec.describe Post, type: :model do
+  let(:post) { Post.create_or_find_by!(title: 'my title', body: 'post') }
+
   # This spec never really had any reason to use before(:all) and switching to before works.
   before do
-    @post = Post.create_or_find_by!(title: 'my title', body: 'post')
+    post
   end
 
   describe "post can be modified" do
     it "expects to be able to update a post" do
-      @post.update!(title: 'a updated title')
-      expect(@post.title).to eq 'a updated title'
+      post.update!(title: 'a updated title')
+      expect(post.title).to eq 'a updated title'
     end
   end
 end

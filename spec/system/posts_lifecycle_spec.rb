@@ -6,14 +6,16 @@ require "rails_helper"
 # Success Rate: ~90%
 # Suite Required: false
 RSpec.describe "basic posts flow", :js do
+  let(:existing_post) { Post.create!(title: 'first system post', body: 'post', score: 1) }
+
   before do
-    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    existing_post
   end
 
   context "posts" do
     it "can see index" do
       visit "/posts"
-      expect(page).to have_content(/#{@existing_post.title}/i)
+      expect(page).to have_content(/#{existing_post.title}/i)
     end
 
     it "can add a new post" do

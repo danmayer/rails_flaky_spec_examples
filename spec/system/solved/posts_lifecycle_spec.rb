@@ -30,14 +30,16 @@ require "rails_helper"
 # NOTE: ALL of the specs in this file are the same, but the solved meta data and ENV
 # are applied which results in the JS being fixed in the app code.
 RSpec.describe "basic posts flow", :js do
+  let(:existing_post) { Post.create!(title: 'first system post', body: 'post', score: 1) }
+
   before do
-    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    existing_post
   end
 
   context "posts" do
     it "can see index" do
       visit "/posts"
-      expect(page).to have_content(/#{@existing_post.title}/i)
+      expect(page).to have_content(/#{existing_post.title}/i)
     end
 
     it "can add a new post" do

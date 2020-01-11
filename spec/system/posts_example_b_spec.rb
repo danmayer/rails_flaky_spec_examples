@@ -6,15 +6,17 @@ require "rails_helper"
 # Success Rate: ~90%
 # Suite Required: false
 RSpec.describe "posts ajax fills body", :js do
+  let(:existing_post) { Post.create!(title: 'first system post', body: 'post', score: 1) }
+
   before do
-    @existing_post = Post.create!(title: 'first system post', body: 'post', score: 1)
+    existing_post
   end
 
   context "posts" do
     it "can see index" do
       post_count = Post.count
       visit "/posts"
-      expect(page).to have_content(/#{@existing_post.title}/i)
+      expect(page).to have_content(/#{existing_post.title}/i)
       expect(page).to have_content("total: #{post_count}")
       expect(page).to have_content("missing body: 0")
 
