@@ -108,6 +108,7 @@ There are a number of good related posts and projects that are also good follow 
 * some specs are modified examples from [tests that sometimes fail](https://samsaffron.com/archive/2019/05/15/tests-that-sometimes-fail)
 * make it easier to debug flaky tests, [5-ways to improve flaky test debugging](https://building.buildkite.com/5-ways-weve-improved-flakey-test-debugging-4b3cfb9f27c8)
 * test-smells, [examples of bad JS and Ruby test patterns](https://github.com/testdouble/test-smells)
+* * [Flaky Test Detection](https://buildpulse.io/), help detect and find tests causing flakiness
 * [list of flaky test practices to avoid](https://github.com/evilmartians/terraforming-rails/blob/master/guides/flaky.md)
 * [fixing flaky tests like a detective](https://sonja.codes/fixing-flaky-tests-like-a-detective)
 * [eliminating flaky ruby tests](https://engineering.gusto.com/eliminating-flaky-ruby-tests/)
