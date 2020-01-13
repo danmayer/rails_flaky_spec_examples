@@ -12,6 +12,8 @@ require 'rails_helper'
 # this was extracted from a real world project, where an upstream service used 48.hours
 # and the client service used 2.days in the tests. The tests failed only around DST changes.
 #
+# Thanks @raorao & @rossta for the DST time example
+#
 # flaky: bundle exec rspec spec/models/post_example_b_spec.rb
 # failure: SPEC_DATE='02-11-2019 14:33:20' bundle exec rspec spec/models/post_example_b_spec.rb
 # success: SPEC_DATE='02-10-2019 14:33:20' bundle exec rspec spec/models/post_example_b_spec.rb
