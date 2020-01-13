@@ -90,6 +90,7 @@ A list of suggested examples, I have yet to add...
 * capybara
    * ajax request race conditions
    * with external network API request
+   * add how to precompile assets so there isn't a race on very first spec that needs assets
 * infrastructure error like redis or postgres hasn't started in time for the spec suite
     * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
 * class munging definine the same fake test class in two different specs, that would fail when run in wrong order
