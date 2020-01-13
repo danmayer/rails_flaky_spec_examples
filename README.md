@@ -14,7 +14,7 @@ This project is supposed to help show flaky test issues by example. You can run 
 
 * `git clone https://github.com/danmayer/rails_flaky_spec_examples`
 * `cd rails_flaky_spec_examples`
-* `gem insstall bundler #if you don't have bundler 2.0.X`
+* `gem install bundler #if you don't have bundler 2.0.X`
 * `bundle install`
 * `yarn`
 * `bundle exec rake db:drop db:create db:migrate`
