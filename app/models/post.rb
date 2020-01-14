@@ -18,8 +18,12 @@ class Post < ApplicationRecord
 
   def self.set_body
     Post.where(body: nil).each_with_index do |post, _index|
-      post.update!(body: pull_body)
+      post.set_body!
     end
+  end
+
+  def set_body!
+    update!(body: self.class.pull_body)
   end
 
   def self.generate!

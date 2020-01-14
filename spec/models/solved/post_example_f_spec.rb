@@ -29,7 +29,7 @@ require 'rails_helper'
 # failure: N/A
 # success: N/A
 RSpec.describe Post, type: :model do
-  describe "post pull_body" do
+  describe "post set_body" do
     before do
       # NOTE: this should really be in spec_helpers and be set for your entire test suite
       # doing so will avoid any network connections from slipping into your test suite
@@ -58,9 +58,9 @@ RSpec.describe Post, type: :model do
         .to_return(status: 200, body: '{"title": "a diff title"}', headers: {})
     end
 
-    it "expect to set body on posts without one" do
+    it "expect to set body on a post without one" do
       post = Post.create!(title: Faker::String.unique.random(22).tr("\u0000", ''))
-      expect { Post.set_body }.to change { post.reload.body.class }.from(NilClass).to(String)
+      expect { post.set_body! }.to change { post.reload.body.class }.from(NilClass).to(String)
     end
   end
 end
