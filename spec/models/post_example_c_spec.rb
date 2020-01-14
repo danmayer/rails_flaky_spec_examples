@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 # Classification: Shared State
-# Success Rate: 90%
+# Success Rate: 50%
 # Suite Required: true
 RSpec.describe Post, type: :model do
   before(:all) do
