@@ -3,7 +3,7 @@
 require 'rails_helper'
 
 # Classification: Shared State, Order Dependency
-# Success Rate: 99%
+# Success Rate: 10% (100% solo, 10% suite)
 # Suite Required: true
 RSpec.describe Post, type: :model do
   let(:post) { Post.create!(title: 'first', body: 'post', score: 1) }

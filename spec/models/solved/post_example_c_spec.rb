@@ -3,13 +3,13 @@
 require 'rails_helper'
 
 # Classification: Shared State
-# Success Rate: 90%
+# Success Rate: 50%
 # Suite Required: true
 # Example: Shared State, based on before(:all)
 #
 # Description:
 # Before all runs outside of transactions. If you are using transactions for your
-# specs, you will now be in a world of hurt... This spec will nearly always pass
+# specs, you will now be in a world of hurt... This spec alone will always pass
 # but it will break other specs depending on if this runs before or after them.
 #
 # Basically, `before(:all)`` is bad don't do it.
@@ -26,6 +26,8 @@ RSpec.describe Post, type: :model do
   let(:post) { Post.create_or_find_by!(title: 'my title', body: 'post') }
 
   # This spec never really had any reason to use before(:all) and switching to before works.
+  # Honestly, with a single example just using let is good enough... but trying to highlight
+  # use before, not before(:all)
   before do
     post
   end

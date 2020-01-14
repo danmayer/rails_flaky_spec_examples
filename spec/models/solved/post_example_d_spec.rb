@@ -3,27 +3,32 @@
 require 'rails_helper'
 
 # Classification: Shared State
-# Success Rate: 90%
+# Success Rate: 50%
 # Suite Required: true
-# Example: Shared State, based on other specs
+# Example: Shared State, based on before(:all)
 #
 # Description:
-# This is kind of a weird example... this spec itself is basically fine
-# this spec fails when `post_example_c_spec` corrupts the DB state with before(:all)
+# Before all runs outside of transactions. If you are using transactions for your
+# specs, you will now be in a world of hurt... This spec alone will always pass
+# but it will break other specs depending on if this runs before or after them.
 #
-# This spec run alone will always pass.
-# Run as part of the suite it will pass or fail depending on if it runs first
-# or second related to post_order_across_file_two_spec
+# Basically, `before(:all)`` is bad don't do it.
+# https://makandracards.com/makandra/11507-using-before-all-in-rspec-will-cause-you-lots-of-trouble-unless-you-know-what-you-are-doing
+#
+# 'rubocop-rspec' will give an error for using before(:all), I disabled that cop so
+# I could show an example, but it really should be avoided, and rubocop-rspec can help
+# ensure usage doesn't slip in
 #
 # flaky: bundle exec rspec
 # failure: N/A
-# success: bundle exec rspec spec/models/post_example_d_spec.rb
+# success: N/A
 RSpec.describe Post, type: :model do
   let(:post) { Post.create!(title: 'yet another title', body: 'post') }
 
-  describe "post set_scores" do
-    it "expect set_scores to add scores to posts missing scores" do
-      expect { Post.set_scores }.to change { post.reload.score }.from(nil).to(1)
+  describe "existing post can be modified" do
+    it "expects to be able to update a post" do
+      post.update!(title: 'a updated title')
+      expect(post.title).to eq 'a updated title'
     end
   end
 end

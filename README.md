@@ -81,6 +81,13 @@ We would love additional flaky spec examples if you have solved a bad flaky spec
 
 A list of suggested examples, I have yet to add...
 
+* shared state
+   * in helpers opposed to class variables a rails.cache (in memory or redis) which persists across specs
+   * ^^ alternative or additional to above some tool like flipper based on redis, which persists across specs
+* the before(:all) spec never fails  
+* add factory_bot example
+	* We could solve with factorybot sequences title1, title2, title3
+	* could be solved this way as an alternative spec/models/post_example_e_spec.rb
 * Timing
 	* timezone specific example (vs DST)
 	* new year
@@ -94,6 +101,8 @@ A list of suggested examples, I have yet to add...
 * infrastructure error like redis or postgres hasn't started in time for the spec suite
     * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
 * class munging definine the same fake test class in two different specs, that would fail when run in wrong order
+* make network call modlel spec more clear to be a network spec
+    * switch the it to be on the specific network call method not the one before it  
 
 # Interesting Seeds
 

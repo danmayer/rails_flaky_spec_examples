@@ -3,14 +3,17 @@
 require 'rails_helper'
 
 # Classification: Shared State
-# Success Rate: 90%
+# Success Rate: 50%
 # Suite Required: true
 RSpec.describe Post, type: :model do
-  let(:post) { Post.create!(title: 'yet another title', body: 'post') }
+  before(:all) do
+    @post = Post.create_or_find_by!(title: 'my title', body: 'post')
+  end
 
-  describe "post set_scores" do
-    it "expect set_scores to add scores to posts missing scores" do
-      expect { Post.set_scores }.to change { post.reload.score }.from(nil).to(1)
+  describe "existing post can be modified" do
+    it "expects to be able to update a post" do
+      @post.update!(title: 'a updated title')
+      expect(@post.title).to eq 'a updated title'
     end
   end
 end

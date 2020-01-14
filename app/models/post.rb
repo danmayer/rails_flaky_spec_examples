@@ -44,6 +44,9 @@ class Post < ApplicationRecord
   # each has some different options / results
   ###
   def self.pull_body
+    # NOTE: __DO NOT SOLVE__ Flaky Specs by removing this rand
+    # this rand is to help send different network errors
+    # and success randomly
     if rand(7) > 1
       body_from_json_placeholder
     else
