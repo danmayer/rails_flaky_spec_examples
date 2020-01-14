@@ -21,4 +21,10 @@ module PostsHelper
   def generated_on
     Time.current.strftime("%b, %-d, %Y")
   end
+
+  def generated_on_cached
+    Rails.cache.fetch("generated_on_cached", expires_in: 1.day) do
+      generated_on
+    end
+  end
 end

@@ -5,7 +5,7 @@ require 'rails_helper'
 # Classification: Shared State
 # Success Rate: ~50%
 # Suite Required: false
-# Example: Shared Class Variable State, in file test order dependency
+# Example: Shared Class Variable State, in file test 'Order' dependency
 #
 # Description:
 # Specs in this file have access to a helper object that includes
@@ -13,9 +13,9 @@ require 'rails_helper'
 # on the order they are run. This is because calling `helper.increament_counter(2)` modifies
 # the class state.
 #
-# flaky: bundle exec rspec spec/helpers/posts_helper_spec.rb
-# failure: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52493
-# success: bundle exec rspec spec/helpers/posts_helper_spec.rb --seed 52496
+# flaky: bundle exec rspec spec/helpers/posts_a_helper_spec.rb
+# failure: bundle exec rspec spec/helpers/posts_helper_a_spec.rb --seed 52493
+# success: bundle exec rspec spec/helpers/posts_helper_a_spec.rb --seed 52496
 RSpec.describe PostsHelper, type: :helper do
   describe "verifies counter" do
     # If you really want to test the accessor isolated, don't compare to default value

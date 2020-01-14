@@ -104,7 +104,7 @@ A list of suggested examples, I have yet to add...
 
 # Interesting Seeds
 
-These can be helpful in terms of examples and understanding what is happening... Technically if absolutely everything goes right, the flaky spec suite could pass...
+These can be helpful in terms of examples and understanding what is happening... Technically if absolutely everything goes right, the flaky spec suite could pass... While working to fix a bug, you can use your local seed to ensure the spec you are trying to fix keeps failing.
 
 * `bundle exec rspec --seed 23455 spec/models/` -> a passing run
 
