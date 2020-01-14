@@ -97,9 +97,7 @@ A list of suggested examples, I have yet to add...
    * add how to precompile assets so there isn't a race on very first spec that needs assets
 * infrastructure error like redis or postgres hasn't started in time for the spec suite
     * perhaps this one is to much of a CI or machine setup timing issue vs flaky tests?  
-* class munging definine the same fake test class in two different specs, that would fail when run in wrong order
-* make network call model spec more clear to be a network spec
-    * switch the it to be on the specific network call method not the one before it  
+* class munging define the same fake test class in two different specs, that would fail when run in wrong order
 
 # Interesting Seeds
 
