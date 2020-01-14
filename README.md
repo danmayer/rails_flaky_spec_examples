@@ -84,13 +84,11 @@ A list of suggested examples, I have yet to add...
 * shared state
    * in helpers opposed to class variables a rails.cache (in memory or redis) which persists across specs
    * ^^ alternative or additional to above some tool like flipper based on redis, which persists across specs
-* the before(:all) spec never fails  
 * add factory_bot example
 	* We could solve with factorybot sequences title1, title2, title3
 	* could be solved this way as an alternative spec/models/post_example_e_spec.rb
 * Timing
 	* timezone specific example (vs DST)
-	* new year
 	* leap year 
 * avoid exact ordering, match_array matcher instead of eq([...]). or eq vs include?
 * another hard coded id example, `expect { Post.find(42) }.to raise_error(ActiveRecord::RecordNotFound)`
