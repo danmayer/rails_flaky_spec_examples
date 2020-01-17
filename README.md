@@ -84,6 +84,7 @@ A list of suggested examples, I have yet to add...
 
 * shared state
    * ^^ shared state, redis: additional to Rails.cache example some tool like flipper based on redis, which persists across specs
+   * locale not EN example: https://review.discourse.org/t/fix-some-specs-were-leaking-state-causing-other-tests-to-run-in-different-languages-and-randomly-failing-with-some-seeds/3452
 * add factory_bot example
 	* We could solve with factorybot sequences title1, title2, title3
 	* could be solved this way as an alternative spec/models/post_example_e_spec.rb
