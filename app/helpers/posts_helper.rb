@@ -18,6 +18,15 @@ module PostsHelper
     @@bad_class_counter += val
   end
 
+  PAGE_HITS_KEY = 'PAGE_HITS_KEY_v1'
+  def hits_counter
+    REDIS.get(PAGE_HITS_KEY) || (increament_hits && '1')
+  end
+
+  def increament_hits
+    REDIS.incr(PAGE_HITS_KEY)
+  end
+
   def generated_on
     Time.current.strftime("%b, %-d, %Y")
   end
