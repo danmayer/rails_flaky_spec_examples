@@ -58,6 +58,9 @@ development:
 test:
   <<: *default
   database: flaky_spec_examples_test
+  url: <%= ENV['DATABASE_URL'] %>
+  username: <%= ENV["POSTGRES_USER"] %>
+  password: <%= ENV["POSTGRES_PASSWORD"] %>
 
 # As with config/credentials.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
