@@ -9,7 +9,9 @@
     "jquery": "^3.4.1",
     "turbolinks": "^5.2.0",
     "serialize-javascript": "^2.1.1",
-    "kind-of": "^6.0.3"
+    "kind-of": "^6.0.3",
+    "minimist": "^1.2.3",
+    "acorn": "^6.4.1"
   },
   "version": "0.1.0",
   "devDependencies": {
